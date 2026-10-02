@@ -22,7 +22,7 @@ const concerns = [
 ];
 
 const steps = [
-  { n: "01", t: "Konsultasi & Analisis Kulit", d: "Pemeriksaan dengan skin analysis dan diskusi langsung dengan dokter.", img: "step1-v2" },
+  { n: "01", t: "Konsultasi & Analisis Kulit", d: "Pemeriksaan dengan skin analysis dan diskusi langsung dengan dokter.", img: "step1-v3" },
   { n: "02", t: "Rencana Perawatan Personal", d: "Treatment disesuaikan dengan kondisi, kebutuhan, dan target kulitmu.", img: "step2-v2" },
   { n: "03", t: "Mulai Treatment & Monitoring", d: "Proses perawatan dengan standar medis dan evaluasi hasil secara berkala.", img: "step3-v2" },
 ];
@@ -60,7 +60,7 @@ export default function Page() {
           </div>
 
           {/* photo */}
-          <div className="relative mx-auto min-h-[340px] w-full max-w-md overflow-hidden rounded-3xl lg:mx-0 lg:max-w-none lg:rounded-none">
+          <div className="relative mx-auto min-h-[340px] w-full max-w-xl overflow-hidden rounded-3xl lg:mx-0 lg:max-w-none lg:rounded-none">
             <div className="hero-photo absolute inset-0"><Image src="/img/hero-v2.jpg" alt="Potret kulit wajah" fill priority sizes="(min-width:1024px) 35vw, 448px" className="object-cover object-[55%_25%]" /></div>
             <span className="absolute bottom-6 left-6 -rotate-6 font-hand text-[22px] leading-tight text-white drop-shadow-[0_1px_6px_rgba(0,0,0,.5)]">
               Kulit sehat<br />versi kamu<br />pasti bisa.
@@ -137,9 +137,9 @@ export default function Page() {
             <h2 className="text-[22px] font-extrabold leading-[1.1] tracking-tight">Rencana kulitmu,<br />jelas dari awal.</h2>
             <p className="mt-3 text-[11px] leading-snug text-white/85">Dari konsultasi hingga hasil, semua terstruktur dengan jelas dan transparan.</p>
           </div>
-          <div className="relative min-h-[190px] flex-1 bg-blue">
-            <Image src="/img/lobby-v2.jpg" alt="Resepsionis klinik SKIN.LAB" fill sizes="255px" className="object-cover" />
-            <p className="absolute bottom-0 right-0 w-[100px] bg-blue p-2.5 font-hand text-[19px] font-semibold uppercase leading-[1.05] text-white -rotate-[7deg]">
+          <div className="relative h-[260px] overflow-hidden bg-blue lg:h-auto lg:flex-1 lg:min-h-[190px]">
+            <Image src="/img/lobby-v2.jpg" alt="Ruang treatment SKIN.LAB" fill sizes="255px" className="object-cover" />
+            <p className="absolute bottom-0 right-0 w-[110px] bg-blue p-2.5 pr-3 font-hand text-[19px] font-semibold uppercase leading-[1.05] text-white ">
               Same skin, different story
             </p>
           </div>
@@ -149,7 +149,7 @@ export default function Page() {
           {steps.map((s, i) => (
             <li key={s.n} className="flex items-center gap-3 p-4 lg:h-[88px]">
               <div className="relative h-[68px] w-[100px] shrink-0 overflow-hidden rounded-md">
-                <Image src={`/img/${s.img}.jpg`} alt="" fill sizes="100px" className="object-cover" />
+                <Image src={`/img/${s.img}.jpg`} alt="" fill sizes="100px" className="object-cover object-top" />
               </div>
               <div className="flex-1">
                 <p className="text-[12px] font-bold text-blue">{s.n}</p>
@@ -165,7 +165,7 @@ export default function Page() {
           {/* hasil nyata */}
           <div className="relative p-4">
             <p className="text-[9px] font-bold uppercase tracking-[0.2em]">Hasil nyata, bertahap <span className="text-lime">→</span> <span className="font-normal normal-case tracking-normal text-black/40">(ilustrasi)</span></p>
-            <div className="mt-3 grid grid-cols-4 gap-1.5 lg:w-[80%]">
+            <div className="mt-3 grid grid-cols-4 gap-1.5 md:max-w-md lg:w-[80%]">
               {baLabels.map((l, i) => (
                 <figure key={l}>
                   <div className="relative aspect-[0.78/1] overflow-hidden rounded-sm">
@@ -183,18 +183,18 @@ export default function Page() {
 
           {/* treatment populer */}
           <div className="border-black/10 p-4 lg:border-x">
-            <div className="grid grid-cols-[1fr_auto_auto] gap-x-4 text-[9px] font-bold uppercase tracking-wider">
-              <span>Treatment populer</span><span className="w-[72px]">Harga</span><span className="w-[52px]">Downtime</span>
+            <div className="grid grid-cols-[1fr_auto] gap-x-4 text-[9px] sm:grid-cols-[1fr_auto_auto] font-bold uppercase tracking-wider">
+              <span>Treatment populer</span><span className="w-[72px]">Harga</span><span className="hidden w-[52px] sm:block">Downtime</span>
             </div>
             <ul className="mt-2 divide-y divide-black/10">
               {treatments.slice(0, 4).map((t) => (
-                <li key={t.n} className="grid grid-cols-[1fr_auto_auto] items-center gap-x-4 py-2">
+                <li key={t.n} className="grid grid-cols-[1fr_auto] items-center gap-x-4 py-2 sm:grid-cols-[1fr_auto_auto]">
                   <div>
                     <Link href={`/treatment#${t.slug}`} className="text-[11px] font-bold hover:text-blue">{t.n}</Link>
                     <p className="text-[8.5px] text-black/55">{t.d}</p>
                   </div>
                   <span className="w-[72px] text-[10px] font-medium">{rp(t.p)}</span>
-                  <span className="w-[52px] text-[10px] text-black/70">{t.t}</span>
+                  <span className="hidden w-[52px] text-[10px] text-black/70 sm:block">{t.t}</span>
                 </li>
               ))}
             </ul>

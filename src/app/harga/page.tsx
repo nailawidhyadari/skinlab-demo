@@ -12,19 +12,19 @@ export default function Page() {
       </PageHead>
       <div className="px-5 py-10 lg:px-10">
         <div className="overflow-x-auto rounded-2xl border border-black/10">
-          <table className="w-full min-w-[640px] text-left text-[14px]">
+          <table className="w-full text-left text-[14px]">
             <thead className="bg-mist text-[11px] uppercase tracking-wider">
-              <tr><th className="p-4">Treatment</th><th className="p-4">Cocok untuk</th><th className="p-4">Durasi</th><th className="p-4">Downtime</th><th className="p-4">Harga / sesi</th><th /></tr>
+              <tr><th className="p-4">Treatment</th><th className="hidden p-4 md:table-cell">Cocok untuk</th><th className="hidden p-4 md:table-cell">Durasi</th><th className="hidden p-4 md:table-cell">Downtime</th><th className="p-4">Harga</th><th /></tr>
             </thead>
             <tbody className="divide-y divide-black/10">
               {treatments.map((t) => (
                 <tr key={t.slug}>
-                  <td className="p-4 font-bold">{t.n}</td>
-                  <td className="p-4 text-black/70">{t.d}</td>
-                  <td className="p-4">{t.dur}</td>
-                  <td className="p-4">{t.t}</td>
-                  <td className="p-4 font-semibold">{rp(t.p)}</td>
-                  <td className="p-4"><Link href={`/booking?treatment=${t.slug}`} className="font-semibold text-blue">Booking →</Link></td>
+                  <td className="p-3 font-bold sm:p-4">{t.n}<span className="mt-0.5 block text-[12px] font-normal text-black/55 md:hidden">{t.dur} · downtime {t.t}</span></td>
+                  <td className="hidden p-4 text-black/70 md:table-cell">{t.d}</td>
+                  <td className="hidden p-4 md:table-cell">{t.dur}</td>
+                  <td className="hidden p-4 md:table-cell">{t.t}</td>
+                  <td className="whitespace-nowrap p-3 font-semibold sm:p-4">{rp(t.p)}</td>
+                  <td className="whitespace-nowrap p-3 sm:p-4"><Link href={`/booking?treatment=${t.slug}`} className="font-semibold text-blue">Booking</Link></td>
                 </tr>
               ))}
             </tbody>
