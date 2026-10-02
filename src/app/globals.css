@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: var(--font-sans), system-ui, sans-serif;
+  --font-display: var(--font-display), Impact, sans-serif;
+  --font-hand: var(--font-hand), cursive;
+  --color-ink: #0b0b12;
+  --color-blue: #0f3bff;
+  --color-lime: #d4f542;
+  --color-mist: #e6edf9;
+}
+
+body {
+  background: #fff;
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+}
+
+.hero-bg {
+  background:
+    radial-gradient(60% 80% at 100% 20%, #c9d9f4 0%, transparent 70%),
+    linear-gradient(180deg, #fbf8f5 0%, #f1f3f8 100%);
+}
+@media (min-width: 1024px) {
+  .hero-photo {
+    mask-image: linear-gradient(to right, transparent 0, #000 14%, #000 88%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0, #000 14%, #000 88%, transparent 100%);
+  }
+}
